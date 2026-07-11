@@ -3,3 +3,7 @@ node_modules/
 *.jpg
 __pycache__/
 .DS_Store
+verify*.js
+verify*.py
+package.json
+package-lock.json
