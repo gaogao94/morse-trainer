@@ -5,10 +5,10 @@ A responsive, interactive Morse code learning tool that runs entirely in the bro
 
 ## Features
 
-- **Binary tree visualization** — see every Morse character as a node in the dit/dah decision tree. Click any node to hear its code. On phones the tree renders at full size and scrolls horizontally.
+- **Binary tree visualization** — see every Morse character as a node in the dit/dah decision tree. Click any node to hear its code. The tree always scales to fit its panel — no scrollbars on any screen size.
 - **Key & spacebar input** — hold the key button or spacebar to send Morse code. Release timing decides dit vs dah.
 - **Real-time decoding** — your input appears instantly as letters, with visual feedback on the tree.
-- **Teach mode** — guided curriculum: single characters first (each with a "why this code" + mnemonic explanation), then common words (SOS, CQ, DE, 73, …) with per-letter playback.
+- **Teach mode** — guided curriculum: single characters first (each with a "why this code" + mnemonic explanation), then common words (SOS, CQ, DE, 73, …). You key each character yourself on the key — correct keying auto-advances.
 - **Study mode** — explore freely. Click nodes to listen, send characters to see them decoded.
 - **Test mode (TX/RX)** — 发测试: the app prompts a character, you key it. 收测试: the app plays a character, you pick it from four options. Track correct/error rate.
 - **Feedback** — a feedback tab POSTs to `serve.py`, which logs the message and forwards it to WeChat via the hermes agent channel.
