@@ -5,12 +5,15 @@ A responsive, interactive Morse code learning tool that runs entirely in the bro
 
 ## Features
 
-- **Binary tree visualization** — see every Morse character as a node in the dit/dah decision tree. Click any node to hear its code.
+- **Binary tree visualization** — see every Morse character as a node in the dit/dah decision tree. Click any node to hear its code. On phones the tree renders at full size and scrolls horizontally.
 - **Key & spacebar input** — hold the key button or spacebar to send Morse code. Release timing decides dit vs dah.
 - **Real-time decoding** — your input appears instantly as letters, with visual feedback on the tree.
+- **Teach mode** — guided curriculum: single characters first (each with a "why this code" + mnemonic explanation), then common words (SOS, CQ, DE, 73, …) with per-letter playback.
 - **Study mode** — explore freely. Click nodes to listen, send characters to see them decoded.
-- **Test mode** — the app prompts a random character; you send its Morse code. Track correct/error rate.
+- **Test mode (TX/RX)** — 发测试: the app prompts a character, you key it. 收测试: the app plays a character, you pick it from four options. Track correct/error rate.
+- **Feedback** — a feedback tab POSTs to `serve.py`, which logs the message and forwards it to WeChat via the hermes agent channel.
 - **Adjustable speed** — slider + numeric input, defaults to 10 WPM. Affects dit/dah timing and decode timeouts.
+- **Mobile-friendly audio** — the AudioContext is pre-warmed on first touch and tones are scheduled on the audio clock, so short presses always sound.
 - **Proportional scaling** — the entire UI scales up on tall windows and keeps natural size on short ones.
 - **Punctuation & prosigns** — `. , ? / = AR HH` supported as both input and reference.
 - **Depth labels** — layer numbers on the left show how many symbols deep each character sits in the tree.
@@ -46,8 +49,37 @@ Pause between characters to have a space inserted automatically. The word timeou
 
 ### Modes
 
+- **教学** (Teach) — 单字 then 单词. Each character comes with a static explanation (why it has this code + how to memorize it).
 - **学习** (Study) — explore the tree, click to hear, send freely.
-- **测试** (Test) — answer character prompts. Score tracked at the bottom.
+- **测试** (Test) — 发测试 (you key the prompted character) or 收测试 (listen and pick from four options). Score tracked at the bottom.
+- **反馈** (Feedback) — send feedback to the site owner's WeChat (requires `serve.py`, see below).
+
+## Optional: feedback server
+
+The app itself is static, but the feedback tab needs a tiny backend:
+
+```
+python3 serve.py 8080
+```
+
+This serves the static files AND handles `POST /api/feedback`: every message is appended to `feedback.log` and forwarded to WeChat via `hermes send --to weixin` (requires a configured [hermes](https://github.com/) agent on the host).
+
+Environment variables:
+
+| Var | Default | Purpose |
+|-----|---------|---------|
+| `FEEDBACK_DRY_RUN=1` | off | Only write `feedback.log`, don't send to WeChat (for testing) |
+| `HERMES_TARGET` | `weixin` | `hermes send` target |
+| `HERMES_BIN` | `hermes` | Path to the hermes binary |
+
+Quick test:
+
+```
+FEEDBACK_DRY_RUN=1 python3 serve.py 8080 &
+curl -X POST localhost:8080/api/feedback -H 'Content-Type: application/json' -d '{"msg":"test"}'
+tail -1 feedback.log
+hermes send --to weixin "通道测试"   # verify the real WeChat path
+```
 
 ### Filters
 
@@ -71,6 +103,7 @@ Default is **10 WPM**. Use the slider or type a number directly (1–60). Timing
 ```
 morse-trainer/
 ├── index.html      # The entire application (HTML + CSS + JS)
+├── serve.py        # Optional: static server + /api/feedback -> WeChat via hermes
 ├── README.md       # This file
 └── .gitignore
 ```

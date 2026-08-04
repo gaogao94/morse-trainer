@@ -22,22 +22,23 @@ body{
 .app{width:100%;display:flex;flex-direction:column;gap:8px;transform-origin:top center}
 .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .seg{display:flex;background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.seg button{padding:5px 12px;background:none;border:none;color:var(--dim);font-size:13px;cursor:pointer;transition:all .15s}
+.seg button{padding:5px 12px;background:none;border:none;color:var(--dim);font-size:13px;cursor:pointer;transition:all .15s;white-space:nowrap}
 .seg button.active{background:var(--node);color:#fff}
 .seg.s2 button.active{background:var(--card2);color:var(--text)}
 .wpm{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--dim)}
 .wpm input[type=range]{width:90px;accent-color:var(--node)}
 .wpm b{color:var(--text)}
 .tw{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:auto;padding:6px;-webkit-overflow-scrolling:touch;flex:1 1 0;min-height:300px}
-.tw svg{display:block;margin:0 auto;width:100%;height:100%}
+.tw svg{display:block;margin:0 auto;width:100%;height:100%;min-width:700px}
+.twhint{font-size:10px;color:var(--dim);text-align:center;padding:2px 0 0}
 .edge{transition:stroke .12s,filter .12s,stroke-width .12s}
 .edge.ad{stroke:var(--dit)!important;stroke-width:3.5!important;filter:drop-shadow(0 0 6px rgba(0,230,118,.8))}
 .edge.ah{stroke:var(--dah)!important;stroke-width:3.5!important;filter:drop-shadow(0 0 6px rgba(255,212,0,.8))}
-.elbl{font-size:15px;font-weight:800;pointer-events:none}
+.elbl{font-size:19px;font-weight:800;pointer-events:none}
 .node{cursor:pointer;transition:filter .12s}
 .node.dim{opacity:.12}
 .node.act{filter:drop-shadow(0 0 8px rgba(91,141,239,.9))}
-.nlbl{font-size:11px;font-weight:700;fill:#fff;pointer-events:none;user-select:none}
+.nlbl{font-size:14px;font-weight:700;fill:#fff;pointer-events:none;user-select:none}
 .deck{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px}
 .sig{flex:1;display:flex;flex-direction:column;gap:8px}
 .spath{font-family:"SF Mono","Fira Code",Consolas,monospace;font-size:24px;letter-spacing:6px;min-height:30px;color:var(--text)}
@@ -89,6 +90,39 @@ body{
 .pcode .d{color:var(--dit)}.pcode .h{color:var(--dah)}
 .hidden{display:none!important}
 .wpmn{width:46px;background:var(--card2);border:1px solid var(--border);border-radius:5px;color:var(--text);font-size:12px;padding:2px 4px;text-align:center;-moz-appearance:textfield}
+/* Teach */
+.teach{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 14px;display:flex;flex-direction:column;gap:10px}
+.tcard{display:flex;flex-direction:column;align-items:center;gap:8px}
+.tc{font-size:56px;font-weight:800;line-height:1.1;letter-spacing:2px}
+.tcode{font-family:"SF Mono","Fira Code",Consolas,monospace;font-size:30px;letter-spacing:8px;min-height:38px}
+.tcode .d{color:var(--dit);text-shadow:0 0 8px rgba(0,230,118,.5)}
+.tcode .h{color:var(--dah);text-shadow:0 0 8px rgba(255,212,0,.5)}
+.twhy,.thow{font-size:13px;line-height:1.6;color:var(--text);text-align:center;max-width:560px}
+.twhy b,.thow b{color:var(--node);font-weight:700}
+.tword{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.twl{display:flex;flex-direction:column;align-items:center;gap:2px}
+.twl b{font-size:30px;font-weight:800}
+.twl span{font-family:monospace;font-size:15px;letter-spacing:2px}
+.tnav{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.tnav button,.rxbtn{padding:7px 16px;background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;cursor:pointer}
+.tnav button:active,.rxbtn:active{background:var(--node);color:#fff}
+.tnav .tp{font-size:12px;color:var(--dim);min-width:48px;text-align:center}
+/* RX test */
+.rxopts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rxbtn{font-size:22px;font-weight:700;padding:14px 0;text-align:center}
+.rxbtn.ok{background:rgba(0,230,118,.18);border-color:var(--ok);color:var(--ok)}
+.rxbtn.bad{background:rgba(255,82,82,.15);border-color:var(--err);color:var(--err)}
+.rxbtn:disabled{opacity:.55;cursor:default}
+.rbtn{padding:5px 12px;background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;cursor:pointer}
+/* Feedback */
+.fbx{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.fbx textarea{width:100%;min-height:110px;resize:vertical;background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;padding:8px 10px;font-family:inherit}
+.fbx input{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;padding:7px 10px}
+.fbx .fbrow{display:flex;gap:8px;align-items:center}
+.fbx button{padding:8px 18px;background:var(--node);border:none;border-radius:8px;color:#fff;font-size:14px;cursor:pointer}
+.fbx button.ghost{background:var(--card2);border:1px solid var(--border);color:var(--text)}
+.fbx .fst{font-size:12px;min-height:16px}
+.fbx .fst.ok{color:var(--ok)}.fbx .fst.err{color:var(--err)}.fbx .fst.info{color:var(--dim)}
 </style>
 </head>
 <body>
@@ -96,11 +130,13 @@ body{
   <div class="row">
     <span style="font-size:17px;font-weight:700;letter-spacing:1px">摩斯电码学习器</span>
     <div class="seg" id="modeToggle">
+      <button data-mode="teach">教学</button>
       <button class="active" data-mode="study">学习</button>
       <button data-mode="test">测试</button>
+      <button data-mode="fb">反馈</button>
     </div>
   </div>
-  <div class="row">
+  <div class="row" id="ctrlRow">
     <div class="seg s2" id="filterBar">
       <button class="active" data-filter="all">全部</button>
       <button data-filter="letter">字母</button>
@@ -113,12 +149,39 @@ body{
       <span>WPM</span>
     </div>
   </div>
-  <div class="tw" id="tw"><svg id="tree"></svg></div>
+  <div class="row hidden" id="testBar">
+    <div class="seg s2" id="testType">
+      <button class="active" data-tt="tx">发测试</button>
+      <button data-tt="rx">收测试</button>
+    </div>
+    <button class="rbtn hidden" id="replay">↻ 重听</button>
+  </div>
+  <div class="tw" id="tw"><svg id="tree"></svg><div class="twhint">手机上可左右滑动查看全树</div></div>
+  <div class="teach hidden" id="teachBox">
+    <div class="seg s2" id="teachStage" style="align-self:center">
+      <button class="active" data-stage="char">单字</button>
+      <button data-stage="word">单词</button>
+    </div>
+    <div class="tcard">
+      <div class="tc" id="tChar">E</div>
+      <div class="tcode" id="tCode"></div>
+      <div class="tword hidden" id="tWord"></div>
+      <div class="twhy" id="tWhy"></div>
+      <div class="thow" id="tHow"></div>
+      <div class="tnav">
+        <button id="tPrev">‹ 上一个</button>
+        <span class="tp" id="tProg">1/36</span>
+        <button id="tPlay">▶ 播放</button>
+        <button id="tNext">下一个 ›</button>
+      </div>
+    </div>
+  </div>
   <div class="qbox" id="qbox">
     <div class="ql">提示</div>
     <div class="qh">点击树上的字母听摩斯码 / 按住空格键或下方按钮发报</div>
   </div>
-  <div class="deck">
+  <div class="rxopts hidden" id="rxOpts"></div>
+  <div class="deck" id="deck">
     <div class="sig">
       <div class="spath" id="spath"></div>
       <div class="pbar"><div class="pfill" id="pfill"></div><div class="pmk"></div></div>
@@ -131,7 +194,7 @@ body{
     </div>
   </div>
   <div class="fb info" id="fb">准备就绪</div>
-  <div class="msg">
+  <div class="msg" id="msgBox">
     <div class="msg-top"><span>发送记录</span><div class="msg-btns"><button id="msgSpace">空格</button><button id="msgClear">清空</button></div></div>
     <div class="msg-log" id="mlog"><span class="cur"></span></div>
   </div>
@@ -146,7 +209,17 @@ body{
     <span>字符超时 <b id="tC">360</b>ms</span>
     <span>单词超时 <b id="tW">1440</b>ms</span>
   </div>
-  <div class="pr"><div class="pr-t">标点与特殊符号</div><div class="pg" id="pgrid"></div></div>
+  <div class="pr" id="prBox"><div class="pr-t">标点与特殊符号</div><div class="pg" id="pgrid"></div></div>
+  <div class="fbx hidden" id="fbBox">
+    <div class="pr-t">意见反馈 — 提交后通过服务器 hermes 通道发送到我的微信</div>
+    <textarea id="fbText" placeholder="写下你的建议、遇到的问题或想增加的功能…" maxlength="2000"></textarea>
+    <input id="fbContact" placeholder="称呼 / 联系方式（可选）" maxlength="100">
+    <div class="fbrow">
+      <button id="fbSend">发送反馈</button>
+      <button class="ghost hidden" id="fbCopy">复制内容</button>
+    </div>
+    <div class="fst info" id="fbStatus"></div>
+  </div>
 </div>
 </div>
 <script>
@@ -166,6 +239,58 @@ function ctype(ch){
   if(/[0-9]/.test(ch))return'number';
   return'other';
 }
+// ============ 教学数据（LLM 一次性生成，静态展示） ============
+// 学习顺序：按码长从短到长，先易后难
+var TEACH_CHARS=[
+ {c:'E',w:'E 是英文中出现频率最高的字母，摩斯把最短的码分给了它——这是"频率越高码越短"的设计原则。',h:'一声短音"滴"，全表最简单的一个。'},
+ {c:'T',w:'T 是频率第二高的字母，所以拿到第二短的码：单个长音。',h:'一声长音"哒"，像字母 T 顶上的一横。'},
+ {c:'I',w:'I 是高频元音，用两个短音。',h:'"滴滴"两声，像 i 头上的点被敲了两下。'},
+ {c:'A',w:'A 是高频字母。短长组合是摩斯里最常见的节奏型之一。',h:'跟读 "a-PART"（滴-哒），重音落在后面的长音上。'},
+ {c:'N',w:'N 是高频辅音，正好是 A 的镜像（长短互换）。',h:'"哒-滴"，跟读 "NO-body"，先重后轻。'},
+ {c:'M',w:'M 是高频字母，用两个长音。',h:'"哒—哒—"，像喊 "妈—妈—"（MOM），两个长音。'},
+ {c:'S',w:'三短结构，是国际求救信号 SOS 的开头。',h:'"滴滴滴"三声急促短音，想到 S.O.S 就记住了。'},
+ {c:'U',w:'两短一长，是在 S 后面补一个长音。',h:'跟读 "u-ni-VERSE"（滴滴-哒），尾音拉长。'},
+ {c:'R',w:'R 是高频字母，短-长-短的对称结构。',h:'"滴-哒-滴"，像 "ro-TA-tion" 的节拍，中间重。'},
+ {c:'W',w:'W 是高频字母，一短两长。',h:'"滴-哒-哒"，跟读 "小-喇-叭"，前轻后重。'},
+ {c:'D',w:'一长两短，与 W 正好相反（镜像关系）。',h:'"哒-滴滴"，像敲鼓"咚-咚咚"。'},
+ {c:'K',w:'长-短-长的对称结构；K 也是通信用语"请回答/发过来"。',h:'"哒-滴-哒"，跟读 "KA-yak"，两头重中间轻。'},
+ {c:'G',w:'两长一短。',h:'"哒-哒-滴"，跟读 "咕-咕-叽"，前两个音拉长。'},
+ {c:'O',w:'三个长音，SOS 的结尾；O 是元音里的"重量级"。',h:'"哒—哒—哒—"，像拉长的惊呼"哦——"。'},
+ {c:'H',w:'四个短音，是 S 再加一点。',h:'"滴滴滴滴"，像笑声 "hi-hi-hi-hi"。'},
+ {c:'V',w:'三短一长，因贝多芬《第五交响曲（命运）》开头的"短短短长"闻名——二战时 V 代表胜利（Victory）。',h:'哼一遍"命运"主题曲：滴-滴-滴-哒。'},
+ {c:'F',w:'两短-长-短。',h:'"滴滴-哒-滴"，节奏像"快快-跑-快"，第三个音拉长。'},
+ {c:'L',w:'短-长-短-短。',h:'"滴-哒-滴滴"，跟读"轻-重-轻-轻"。'},
+ {c:'P',w:'短-长-长-短，两端短中间长的对称结构。',h:'像夹心饼干：两头"滴"，中间两个长音"哒哒"。'},
+ {c:'J',w:'一短三长。',h:'"滴-哒-哒-哒"，短音起头，后面三个长音拖住。'},
+ {c:'B',w:'一长三短，与 J 正好相反（镜像关系）。',h:'"哒-滴滴滴"，跟读 "BOOM-clap-clap-clap"。'},
+ {c:'X',w:'长-短-短-长，两长夹两短的对称结构。',h:'"哒-滴滴-哒"，对称感：两头长、中间短。'},
+ {c:'C',w:'长-短-长-短，完全交替的节奏。',h:'"哒-滴-哒-滴"，像钟摆一样长短交替。'},
+ {c:'Y',w:'长-短-长-长。',h:'"哒-滴-哒-哒"，跟读 "YAN-kee-DOO-DLE" 的前四拍。'},
+ {c:'Z',w:'两长两短。',h:'"哒-哒-滴滴"，像 zig-zag 折线：两上两下。'},
+ {c:'Q',w:'两长-短-长。注意和 K（−·−）区分：Q 是在 K 前面多一个长音。',h:'"哒-哒-滴-哒"，跟读 "GOD-save-the-QUEEN"。'},
+ {c:'1',w:'数字 1~5 规律：点开头，点的个数就是数字，后面用划补齐到 5 个符号。',h:'1 = 一点四划。先数点：·'},
+ {c:'2',w:'数字规律：点开头，点数即数字，划补齐。',h:'2 = 两点三划。先数点：··'},
+ {c:'3',w:'数字规律：点开头，点数即数字，划补齐。',h:'3 = 三点两划。先数点：···'},
+ {c:'4',w:'数字规律：点开头，点数即数字，划补齐。',h:'4 = 四点一划。先数点：····'},
+ {c:'5',w:'数字规律的中间点：全是点。',h:'5 = 五点。"滴滴滴滴滴"五连短音。'},
+ {c:'6',w:'数字 6~0 规律：划开头，划的个数 = 数字 − 5，后面用点补齐到 5 个符号。',h:'6 = 一划四点。先数划：−'},
+ {c:'7',w:'数字规律：划开头，划数 = 数字 − 5，点补齐。',h:'7 = 两划三点。先数划：−−'},
+ {c:'8',w:'数字规律：划开头，划数 = 数字 − 5，点补齐。',h:'8 = 三划两点。先数划：−−−'},
+ {c:'9',w:'数字规律：划开头，划数 = 数字 − 5，点补齐。',h:'9 = 四划一点。先数划：−−−−'},
+ {c:'0',w:'数字规律的终点：全是划。',h:'0 = 五划。"哒—哒—哒—哒—哒—"五连长音。'}
+];
+var TEACH_WORDS=[
+ {w:'SOS',n:'国际通用求救信号。三短-三长-三短，节奏鲜明、不可能听错，1908 年起成为全球标准。'},
+ {w:'CQ',n:'业余无线电"广泛呼叫"，谐音 "seek you"——向所有人呼叫，看看谁在频率上。'},
+ {w:'DE',n:'法语"来自"。通报呼号时用：CQ DE ××× 意思是"这里是 ××× 在呼叫"。'},
+ {w:'K',n:'通信用语"请发报 / 该你了"。单独一个 K 表示等待对方回应。'},
+ {w:'AR',n:'报文结束符（A 和 R 连发，中间无间隔）。一条消息发完时用 AR 收尾。'},
+ {w:'73',n:'火腿（业余无线电爱好者）之间的经典问候："致以良好的祝愿"。'},
+ {w:'HELLO',n:'英文"你好"。包含 H、E、L、O 四个常用字母，是很好的综合练习词。'},
+ {w:'MORSE',n:'"摩斯"本人。五个字母覆盖了长音、短音和混合结构。'},
+ {w:'CODE',n:'"电码"。C 和 D 是一对镜像节奏，放在一起练最容易听出差别。'},
+ {w:'RADIO',n:'"无线电"。R-A-D-I-O 从短到长，结尾 O 的三个长音很有辨识度。'}
+];
 // Tree
 function TN(m){this.morse=m;this.char=null;this.dit=null;this.dah=null;this.parent=null;this.x=0;this.depth=0;}
 var root=new TN('');
@@ -178,7 +303,7 @@ for(var c in CHARS){
   }
   n.char=c;
 }
-var XS=38,YS=56,ML=52,MT=22,R=14,lc=0,md=0;
+var XS=38,YS=56,ML=52,MT=22,R=15,lc=0,md=0;
 (function lt(n,d){
   n.depth=d;if(d>md)md=d;
   if(!n.dit&&!n.dah){n.x=lc++;return;}
@@ -202,9 +327,9 @@ function rn(node){
       stroke:isD?'#1a7a48':'#7a6612','stroke-width':2.5,'data-path':node.morse});
     ln.classList.add('edge');el.appendChild(ln);
     var mx=(node.parent.px+px)/2,my=(node.parent.py+py)/2;
-    el.appendChild(S('circle',{cx:mx,cy:my,r:9,fill:'#11141b'}));
-    var lb=S('text',{x:mx,y:my+5.5,'text-anchor':'middle',
-      fill:isD?'#00e676':'#ffd400','font-size':17,'font-weight':800});
+    el.appendChild(S('circle',{cx:mx,cy:my,r:10,fill:'#11141b'}));
+    var lb=S('text',{x:mx,y:my+6.5,'text-anchor':'middle',
+      fill:isD?'#00e676':'#ffd400','font-size':19,'font-weight':800});
     lb.classList.add('elbl');lb.textContent=isD?'\u00B7':'\u2212';el.appendChild(lb);
   }
   var hc=node.char!==null,fc,sc;
@@ -220,7 +345,7 @@ function rn(node){
   else ci.classList.add('empty');
   nl.appendChild(ci);
   if(hc){
-    var tx=S('text',{x:px,y:py+4.5,'text-anchor':'middle','font-size':13,
+    var tx=S('text',{x:px,y:py+5,'text-anchor':'middle','font-size':14,
       'font-weight':700,fill:'#fff','data-path':node.morse});
     tx.classList.add('nlbl');tx.textContent=node.char;nl.appendChild(tx);
   }
@@ -230,7 +355,7 @@ function rn(node){
 rn(root);
 var dlGroup=S('g');
 for(var d=0;d<=md;d++){
-  var lb=S('text',{x:6,y:MT+d*YS+4.5,'text-anchor':'start','font-size':10,fill:'#4a5568','font-weight':600});
+  var lb=S('text',{x:6,y:MT+d*YS+4.5,'text-anchor':'start','font-size':11,fill:'#4a5568','font-weight':600});
   lb.setAttribute('fill','#7a8294');lb.textContent=d;dlGroup.appendChild(lb);
 }
 svg.appendChild(dlGroup);
@@ -246,7 +371,10 @@ nl.addEventListener('click',function(e){
   var t=e.target,p=t.getAttribute('data-path');
   if(p){var ch=rev[p];if(ch&&CHARS[ch])playMorse(CHARS[ch]);}
 });
-// Audio
+// ============ Audio ============
+// 手机上 AudioContext 常被挂起，resume 是异步的——短按时声音还没起来键就松了，
+// 听起来像"没出声"或"被下一声盖掉"。对策：任何首次触摸就预热并 resume，
+// 发音统一走音频时钟调度，短按不足 60ms 的补足时长。
 var actx=null,osc=null,gn=null;
 function ea(){
   if(!actx){
@@ -257,8 +385,12 @@ function ea(){
   }
   if(actx.state==='suspended')actx.resume();
 }
-function ton(){ea();gn.gain.cancelScheduledValues(actx.currentTime);gn.gain.setValueAtTime(gn.gain.value,actx.currentTime);gn.gain.linearRampToValueAtTime(0.28,actx.currentTime+0.008);}
-function toff(){if(!actx)return;gn.gain.cancelScheduledValues(actx.currentTime);gn.gain.setValueAtTime(gn.gain.value,actx.currentTime);gn.gain.linearRampToValueAtTime(0,actx.currentTime+0.008);}
+document.addEventListener('pointerdown',function(){ea();},true);
+document.addEventListener('touchstart',function(){ea();},{capture:true,passive:true});
+function toneOnAt(t){gn.gain.cancelScheduledValues(t);gn.gain.setValueAtTime(gn.gain.value,t);gn.gain.linearRampToValueAtTime(0.28,t+0.008);}
+function toneOffAt(t){gn.gain.cancelScheduledValues(t);gn.gain.setValueAtTime(gn.gain.value,t);gn.gain.linearRampToValueAtTime(0,t+0.008);}
+function ton(){ea();toneOnAt(actx.currentTime);}
+function toff(){if(!actx)return;toneOffAt(actx.currentTime);}
 // State
 var wpm=10,uMs,thMs,cgMs,wgMs;
 function ut(){
@@ -269,8 +401,8 @@ function ut(){
   document.getElementById('tW').textContent=Math.round(wgMs);
 }
 ut();
-var curPath='',msgLog='',mode='study',csf='all';
-var kd=false,kdT=0,cT=null,sT=null,pRAF=null;
+var curPath='',msgLog='',mode='study',csf='all',testType='tx';
+var kd=false,kdT=0,cT=null,sT=null,pRAF=null,offTO=null;
 var sc={c:0,w:0},curQ=null,ansed=false;
 var keyBtn=document.getElementById('key'),led=document.getElementById('led');
 var spEl=document.getElementById('spath'),pfEl=document.getElementById('pfill');
@@ -282,18 +414,22 @@ function uml(){mlText.textContent=msgLog;}
 function ks(e){
   if(e)e.preventDefault();
   if(kd)return;
-  if(mode==='test'&&!curQ)return;
+  if(mode==='test'&&(testType!=='tx'||!curQ))return;
+  if(mode!=='study'&&mode!=='test')return;
+  ea();
   kd=true;kdT=performance.now();
-  clearTimeout(cT);clearTimeout(sT);
+  clearTimeout(cT);clearTimeout(sT);clearTimeout(offTO);
   ton();keyBtn.classList.add('pressed');led.classList.add('on');pl();
 }
 function ke(e){
   if(e)e.preventDefault();
   if(!kd)return;
   kd=false;
-  toff();keyBtn.classList.remove('pressed');led.classList.remove('on');
+  keyBtn.classList.remove('pressed');led.classList.remove('on');
   cancelAnimationFrame(pRAF);pfEl.style.width='0';pfEl.classList.remove('dz');
   var dur=performance.now()-kdT;
+  // 短按补足最小发声时长，避免快速点按时声音被立即截断
+  if(dur<60)offTO=setTimeout(toff,60-dur);else toff();
   atp(dur<thMs?'.':'-');
   cT=setTimeout(cc,cgMs);
   sT=setTimeout(function(){cc();isp();},wgMs);
@@ -357,7 +493,7 @@ function cc(){
       if(ne){ne.style.filter='drop-shadow(0 0 18px rgba(0,230,118,1))';
         (function(n){requestAnimationFrame(function(){n.style.transition='filter .45s';n.style.filter='';});
           setTimeout(function(){n.style.transition='';},500);})(ne);}
-      if(mode==='test'&&curQ&&!ansed){ansed=true;ca(ch);}
+      if(mode==='test'&&testType==='tx'&&curQ&&!ansed){ansed=true;ca(ch);}
     }
   }else{
     fb('\u2717 无效码: '+fm(curPath),'err');
@@ -371,34 +507,164 @@ function isp(){
   }
 }
 function fm(code){return code.replace(/\./g,'\u00B7').replace(/-/g,'\u2212');}
+function fmHtml(code){return code.replace(/\./g,'<span class="d">\u00B7</span>').replace(/-/g,'<span class="h">\u2212</span>');}
 function fb(m,t){fbEl.textContent=m;fbEl.className='fb '+(t||'info');}
-// Play
+// ============ Play（音频时钟调度，手机上不再依赖 setTimeout 发声） ============
 var pTOs=[],pPlaying=false;
 function playMorse(code){
-  pTOs.forEach(clearTimeout);pTOs=[];toff();
-  pPlaying=true;var t=0;
+  ea();
+  pTOs.forEach(clearTimeout);pTOs=[];clHl();
+  var t0=actx.currentTime+0.06,t=t0;
+  gn.gain.cancelScheduledValues(actx.currentTime);
+  gn.gain.setValueAtTime(0,actx.currentTime);
+  pPlaying=true;
   for(var i=0;i<code.length;i++){
     (function(i){
-      var sym=code[i],dur=sym==='.'?uMs:uMs*3,pp=code.substring(0,i+1);
-      pTOs.push(setTimeout(function(){ton();hl(pp);},t));
-      pTOs.push(setTimeout(function(){toff();},t+dur));
-      t+=dur+uMs;
+      var sym=code[i],durMs=(sym==='.'?uMs:uMs*3),durS=durMs/1000,pp=code.substring(0,i+1);
+      toneOnAt(t);toneOffAt(t+durS);
+      pTOs.push(setTimeout(function(){hl(pp);},(t-t0)*1000));
+      t+=durS+uMs/1000;
     })(i);
   }
-  pTOs.push(setTimeout(function(){clHl();pPlaying=false;},t+uMs*2));
+  pTOs.push(setTimeout(function(){clHl();pPlaying=false;},(t-t0)*1000+uMs*2));
 }
-// Test
-function nq(){
-  var pool=[];
-  for(var c in CHARS){
-    if(csf==='all'||ctype(c)===csf)pool.push(c);
+function playWord(word){
+  ea();
+  pTOs.forEach(clearTimeout);pTOs=[];clHl();
+  var t0=actx.currentTime+0.06,t=t0;
+  gn.gain.cancelScheduledValues(actx.currentTime);
+  gn.gain.setValueAtTime(0,actx.currentTime);
+  pPlaying=true;
+  for(var li=0;li<word.length;li++){
+    var code=CHARS[word[li]];
+    if(!code)continue;
+    for(var i=0;i<code.length;i++){
+      (function(pp,i){
+        var sym=code[i],durS=(sym==='.'?uMs:uMs*3)/1000;
+        toneOnAt(t);toneOffAt(t+durS);
+        pTOs.push(setTimeout(function(){hl(pp);},(t-t0)*1000));
+        t+=durS+uMs/1000;
+      })(code.substring(0,i+1),i);
+    }
+    t+=uMs*2/1000; // 字母间隔补到 3 个单位
   }
-  if(!pool.length)pool=Object.keys(CHARS);
-  curQ=pool[Math.floor(Math.random()*pool.length)];ansed=false;
+  pTOs.push(setTimeout(function(){clHl();pPlaying=false;},(t-t0)*1000+uMs*2));
+}
+// ============ 教学模式 ============
+var tStage='char',tIdx=0;
+function tList(){
+  if(tStage==='word')return TEACH_WORDS;
+  return TEACH_CHARS.filter(function(x){
+    return csf==='all'||ctype(x.c)===csf;
+  });
+}
+function renderTeach(){
+  var list=tList();
+  if(!list.length)return;
+  if(tIdx>=list.length)tIdx=0;
+  var it=list[tIdx];
+  var tcEl=document.getElementById('tChar'),cdEl=document.getElementById('tCode'),
+      wdEl=document.getElementById('tWord'),whyEl=document.getElementById('tWhy'),
+      howEl=document.getElementById('tHow');
+  document.getElementById('tProg').textContent=(tIdx+1)+'/'+list.length;
+  if(tStage==='char'){
+    wdEl.classList.add('hidden');tcEl.classList.remove('hidden');cdEl.classList.remove('hidden');
+    tcEl.textContent=it.c;
+    cdEl.innerHTML=fmHtml(CHARS[it.c]);
+    whyEl.innerHTML='<b>为什么：</b>'+it.w;
+    howEl.innerHTML='<b>怎么记：</b>'+it.h;
+  }else{
+    tcEl.classList.add('hidden');cdEl.classList.add('hidden');wdEl.classList.remove('hidden');
+    var h='';
+    for(var i=0;i<it.w.length;i++){
+      var ch=it.w[i],cd=CHARS[ch];
+      if(!cd)continue;
+      h+='<div class="twl"><b>'+ch+'</b><span>'+fm(cd)+'</span></div>';
+    }
+    wdEl.innerHTML=h;
+    whyEl.innerHTML='<b>说明：</b>'+it.n;
+    howEl.innerHTML='';
+  }
+}
+function teachPlay(){
+  var it=tList()[tIdx];
+  if(!it)return;
+  if(tStage==='char')playMorse(CHARS[it.c]);else playWord(it.w);
+}
+document.querySelectorAll('#teachStage button').forEach(function(b){
+  b.addEventListener('click',function(){
+    tStage=b.dataset.stage;tIdx=0;
+    document.querySelectorAll('#teachStage button').forEach(function(x){
+      x.classList.toggle('active',x===b);
+    });
+    renderTeach();updateScale();
+  });
+});
+document.getElementById('tPrev').addEventListener('click',function(){
+  var l=tList().length;tIdx=(tIdx-1+l)%l;renderTeach();
+});
+document.getElementById('tNext').addEventListener('click',function(){
+  var l=tList().length;tIdx=(tIdx+1)%l;renderTeach();
+});
+document.getElementById('tPlay').addEventListener('click',teachPlay);
+// ============ 测试 ============
+function pool(){
+  var p=[];
+  for(var c in CHARS){
+    if(csf==='all'||ctype(c)===csf)p.push(c);
+  }
+  if(!p.length)p=Object.keys(CHARS);
+  return p;
+}
+function nq(){
+  if(testType==='rx'){nqRx();return;}
+  var pl0=pool();
+  curQ=pl0[Math.floor(Math.random()*pl0.length)];ansed=false;
   document.getElementById('qbox').innerHTML='<div class="ql">请发报这个字符</div><div class="qc">'+curQ+'</div>';
   msgLog='';uml();curPath='';spEl.innerHTML='';clHl();
   fb('发报 " '+curQ+' " 的摩斯码','info');
 }
+function nqRx(){
+  var pl0=pool();
+  curQ=pl0[Math.floor(Math.random()*pl0.length)];ansed=false;
+  var code=CHARS[curQ];
+  document.getElementById('qbox').innerHTML='<div class="ql">听音辨字符（共 '+code.length+' 个符号）</div><div class="qh">点"重听"可再听一遍，然后选择你听到的字符</div>';
+  // 选项：正确答案 + 3 个同类干扰项
+  var opts=[curQ],distr=pl0.filter(function(x){return x!==curQ;});
+  while(opts.length<4&&distr.length){
+    var k=Math.floor(Math.random()*distr.length);
+    opts.push(distr.splice(k,1)[0]);
+  }
+  opts.sort(function(){return Math.random()-0.5;});
+  var box=document.getElementById('rxOpts');box.innerHTML='';
+  opts.forEach(function(o){
+    var b=document.createElement('button');b.className='rxbtn';b.textContent=o;
+    b.addEventListener('click',function(){rxAnswer(o,b);});
+    box.appendChild(b);
+  });
+  curPath='';spEl.innerHTML='';clHl();
+  fb('仔细听…','info');
+  setTimeout(function(){if(mode==='test'&&testType==='rx'&&!ansed)playMorse(code);},400);
+}
+function rxAnswer(o,btn){
+  if(ansed)return;ansed=true;
+  var btns=document.querySelectorAll('#rxOpts .rxbtn');
+  for(var i=0;i<btns.length;i++){
+    btns[i].disabled=true;
+    if(btns[i].textContent===curQ)btns[i].classList.add('ok');
+  }
+  if(o===curQ){
+    sc.c++;fb('\u2713 正确！'+curQ+' = '+fm(CHARS[curQ]),'ok');us();
+    setTimeout(nq,1200);
+  }else{
+    btn.classList.add('bad');
+    sc.w++;fb('\u2717 错误，是 '+curQ+' = '+fm(CHARS[curQ]),'err');us();
+    setTimeout(nq,2500);
+  }
+}
+document.getElementById('replay').addEventListener('click',function(){
+  if(curQ)playMorse(CHARS[curQ]);
+});
 function ca(a){
   if(a===curQ){
     sc.c++;fb('\u2713 正确！','ok');us();
@@ -414,20 +680,52 @@ function us(){
   var tot=sc.c+sc.w;
   document.getElementById('sRate').textContent=tot>0?Math.round(sc.c/tot*100)+'%':'\u2014';
 }
-// Mode
+document.querySelectorAll('#testType button').forEach(function(b){
+  b.addEventListener('click',function(){
+    testType=b.dataset.tt;
+    document.querySelectorAll('#testType button').forEach(function(x){
+      x.classList.toggle('active',x===b);
+    });
+    applyMode();sc={c:0,w:0};us();nq();updateScale();
+  });
+});
+// ============ 模式切换 ============
+function show(id,v){document.getElementById(id).classList.toggle('hidden',!v);}
+function applyMode(){
+  var isTeach=mode==='teach',isStudy=mode==='study',isTest=mode==='test',isFb=mode==='fb';
+  var rx=isTest&&testType==='rx';
+  show('ctrlRow',!isFb);
+  show('testBar',isTest);
+  show('replay',rx);
+  show('tw',isTeach||isStudy||(isTest&&!rx));
+  show('teachBox',isTeach);
+  show('qbox',isStudy||isTest);
+  show('rxOpts',rx);
+  show('deck',isStudy||(isTest&&!rx));
+  show('msgBox',isStudy||(isTest&&!rx));
+  show('scoreBar',isTest);
+  show('prBox',!isFb);
+  show('fbBox',isFb);
+}
 function setMode(m){
   mode=m;
   document.querySelectorAll('#modeToggle button').forEach(function(b){
     b.classList.toggle('active',b.dataset.mode===m);
   });
-  var sb=document.getElementById('scoreBar');
+  applyMode();
   if(m==='test'){
-    sc={c:0,w:0};us();sb.classList.remove('hidden');nq();
-  }else{
-    sb.classList.add('hidden');curQ=null;
+    sc={c:0,w:0};us();nq();
+  }else if(m==='teach'){
+    tIdx=0;renderTeach();
+    fb('先看单字、再学单词，点"播放"听发音','info');
+  }else if(m==='study'){
+    curQ=null;
     document.getElementById('qbox').innerHTML='<div class="ql">提示</div><div class="qh">点击树上的字母听摩斯码 / 按住空格键或下方按钮发报</div>';
     fb('准备就绪','info');
+  }else if(m==='fb'){
+    fb('','info');
   }
+  updateScale();
 }
 function setFilter(f){
   csf=f;
@@ -439,6 +737,7 @@ function setFilter(f){
     n.classList.toggle('dim',f!=='all'&&t!==f);
   });
   if(mode==='test')nq();
+  if(mode==='teach'){tIdx=0;renderTeach();}
 }
 // Punct ref
 (function(){
@@ -449,6 +748,42 @@ function setFilter(f){
     var h=it[1].replace(/\./g,'<span class="d">\u00B7</span>').replace(/-/g,'<span class="h">\u2212</span>');
     d.innerHTML='<span class="pc">'+it[0]+'</span><span class="pcode">'+h+'</span>';
     g.appendChild(d);
+  });
+})();
+// ============ 反馈 ============
+(function(){
+  var txt=document.getElementById('fbText'),contact=document.getElementById('fbContact'),
+      send=document.getElementById('fbSend'),copy=document.getElementById('fbCopy'),
+      st=document.getElementById('fbStatus');
+  function st_(m,t){st.textContent=m;st.className='fst '+(t||'info');}
+  send.addEventListener('click',function(){
+    var msg=txt.value.trim();
+    if(!msg){st_('请先写点内容再发送','err');return;}
+    send.disabled=true;st_('发送中…','info');
+    var ctrl=new AbortController();
+    var to=setTimeout(function(){ctrl.abort();},8000);
+    fetch('/api/feedback',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({msg:msg,contact:contact.value.trim(),page:location.href,ua:navigator.userAgent}),
+      signal:ctrl.signal
+    }).then(function(r){
+      clearTimeout(to);send.disabled=false;
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      st_('✓ 已发送，谢谢你的反馈！','ok');
+      txt.value='';contact.value='';copy.classList.add('hidden');
+    }).catch(function(){
+      clearTimeout(to);send.disabled=false;
+      st_('✗ 发送失败（服务器反馈接口不可用）。可点"复制内容"手动转发。','err');
+      copy.classList.remove('hidden');
+    });
+  });
+  copy.addEventListener('click',function(){
+    var s=txt.value+(contact.value?('\n—— '+contact.value):'');
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(s).then(function(){st_('已复制到剪贴板','ok');});
+    }else{
+      txt.select();document.execCommand('copy');st_('已复制到剪贴板','ok');
+    }
   });
 })();
 // Events
@@ -499,7 +834,7 @@ keyBtn.addEventListener('pointercancel',ke);
 keyBtn.addEventListener('contextmenu',function(e){e.preventDefault();});
 document.addEventListener('keydown',function(e){
   if(e.code==='Space'&&!e.repeat){
-    if(e.target.tagName==='INPUT')return;
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
     e.preventDefault();ks(e);
   }
 });

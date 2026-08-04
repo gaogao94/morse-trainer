@@ -7,3 +7,4 @@ verify*.js
 verify*.py
 package.json
 package-lock.json
+feedback.log
