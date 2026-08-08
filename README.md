@@ -71,6 +71,9 @@ Environment variables:
 | `FEEDBACK_DRY_RUN=1` | off | Only write `feedback.log`, don't send to WeChat (for testing) |
 | `HERMES_TARGET` | `weixin` | `hermes send` target |
 | `HERMES_BIN` | `hermes` | Path to the hermes binary |
+| `BIND_HOST` | `127.0.0.1` | Bind address. Localhost-only is safe behind a tunnel/reverse proxy (cloudflared, nginx); set `0.0.0.0` for direct LAN/public access |
+
+`feedback.log` contains visitor IPs and contact info, so it is created with mode `600` (owner read/write only).
 
 Quick test:
 

@@ -12,6 +12,9 @@
     FEEDBACK_DRY_RUN=1   只写 feedback.log，不真正发微信（测试用）
     HERMES_TARGET        hermes send 的目标，默认 weixin（home channel）
     HERMES_BIN           hermes 可执行文件路径，默认 PATH 里的 hermes
+    BIND_HOST            监听地址，默认 127.0.0.1（只接受本机连接，
+                         前面有 cloudflared/nginx 反代时这就够了；
+                         需要对局域网/公网直连时设为 0.0.0.0）
 
 测试:
     FEEDBACK_DRY_RUN=1 python3 serve.py 8080 &
@@ -36,6 +39,7 @@ MAX_BODY = 8192
 HERMES_BIN = os.environ.get("HERMES_BIN", "hermes")
 HERMES_TARGET = os.environ.get("HERMES_TARGET", "weixin")
 DRY_RUN = os.environ.get("FEEDBACK_DRY_RUN") == "1"
+BIND_HOST = os.environ.get("BIND_HOST", "127.0.0.1")
 
 
 def forward_to_wechat(text):
@@ -101,6 +105,11 @@ class Handler(BaseHTTPRequestHandler):
         record = {"ts": ts, "ip": ip, "contact": contact, "msg": msg, "page": page, "ua": ua}
         with open(LOG, "a", encoding="utf-8") as f:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
+        # 含访客 IP/联系方式，收紧权限（仅属主可读写）
+        try:
+            os.chmod(LOG, 0o600)
+        except OSError:
+            pass
 
         text = "📡 morse-trainer 反馈\n%s\n—— %s\n(%s, %s)" % (
             msg, contact or "匿名", ts, ip)
@@ -145,9 +154,9 @@ class Handler(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
-    srv = ThreadingHTTPServer(("0.0.0.0", port), Handler)
+    srv = ThreadingHTTPServer((BIND_HOST, port), Handler)
     mode = "DRY-RUN（只写 feedback.log）" if DRY_RUN else "转发微信 -> %s" % HERMES_TARGET
-    print("morse-trainer serving on 0.0.0.0:%d  |  feedback: %s" % (port, mode))
+    print("morse-trainer serving on %s:%d  |  feedback: %s" % (BIND_HOST, port, mode))
     try:
         srv.serve_forever()
     except KeyboardInterrupt:
